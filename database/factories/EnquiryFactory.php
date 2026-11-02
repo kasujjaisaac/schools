@@ -1,0 +1,29 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Enquiry;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Enquiry>
+ */
+class EnquiryFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->name(),
+            'telephone' => fake()->phoneNumber(),
+            'email' => fake()->safeEmail(),
+            'preferred_contact_method' => 'phone',
+            'message' => fake()->sentence(),
+            'status' => 'new',
+        ];
+    }
+}

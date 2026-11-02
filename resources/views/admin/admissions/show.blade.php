@@ -1,0 +1,6 @@
+<x-layouts.admin :title="$admission->name">
+    <section class="mx-auto max-w-5xl px-4 py-6 sm:px-5 lg:px-6">
+        <div class="flex flex-wrap items-center justify-between gap-4"><div><p class="text-sm font-bold text-[#1d72b8]">Admission</p><h1 class="text-2xl font-bold text-[#082c56]">{{ $admission->name }}</h1></div><div class="flex gap-2"><a href="{{ route('admin.admissions.edit', $admission) }}" class="bg-[#1d72b8] px-4 py-3 font-bold text-white">Edit</a><form method="POST" action="{{ route('admin.admissions.destroy', $admission) }}" data-confirm="Delete this record? This action cannot be undone.">@csrf @method('DELETE')<button class="border border-red-200 px-4 py-3 font-bold text-red-700">Delete</button></form></div></div>
+        <div class="mt-8 grid gap-4 bg-white p-6 "><p class="font-semibold">{{ $admission->institution?->name }}</p><p class="text-sm text-[#5d6b7c]">{{ ucfirst($admission->status) }} · closes {{ $admission->closing_date?->toFormattedDateString() ?? 'when filled' }}</p><p class="leading-7">{{ $admission->description ?? 'No description yet.' }}</p><p class="text-sm text-[#5d6b7c]">{{ $admission->requirements ?? 'No requirements listed.' }}</p></div>
+    </section>
+</x-layouts.admin>
